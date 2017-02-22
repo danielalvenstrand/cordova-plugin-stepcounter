@@ -49,6 +49,7 @@ public class CordovaStepCounter extends CordovaPlugin {
     private final String TAG = "CordovaStepCounter";
 
     //private final String ACTION_CONFIGURE        = "configure";
+    private final String ACTION_INTERVAL         = "interval";
     private final String ACTION_START            = "start";
     private final String ACTION_STOP             = "stop";
     private final String ACTION_GET_STEPS        = "get_step_count";
@@ -205,6 +206,9 @@ public class CordovaStepCounter extends CordovaPlugin {
                     try {
                         dayData = pData.getJSONObject(currentDateString);
                         daySteps = dayData.getInt("steps");
+                        if (data.length() > 0 && data.getBoolean(0)){
+                            daySteps += dayData.getInt("offset");
+                        }
                     }catch(JSONException err){
                         Log.e(TAG,"Exception while getting Object from JSON for "+currentDateString);
                     }
@@ -226,7 +230,7 @@ public class CordovaStepCounter extends CordovaPlugin {
                 Log.i(TAG, "No steps history found in stepCounterService !");
                 callbackContext.success("{}");
             }
-        }
+        },
         else {
             Log.e(TAG, "Invalid action called on class " + TAG + ", " + action);
             callbackContext.error("Invalid action called on class " + TAG + ", " + action);

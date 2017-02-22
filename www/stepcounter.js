@@ -40,8 +40,9 @@ module.exports = {
         cordova.exec(successCallback, errorCallback, "CordovaStepCounter", "stop", []);
     },
 
-    getTodayStepCount: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "CordovaStepCounter", "get_today_step_count", []);
+    getTodayStepCount: function (withOffset, successCallback, errorCallback) {
+        withOffset = (typeof(variable) === "boolean") ? withOffset : false;
+        cordova.exec(successCallback, errorCallback, "CordovaStepCounter", "get_today_step_count", [withOffset]);
     },
 
     getStepCount: function (successCallback, errorCallback) {
