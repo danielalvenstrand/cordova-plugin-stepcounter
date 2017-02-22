@@ -205,10 +205,7 @@ public class CordovaStepCounter extends CordovaPlugin {
                 if(pData.has(currentDateString)){
                     try {
                         dayData = pData.getJSONObject(currentDateString);
-                        daySteps = dayData.getInt("steps");
-                        if (data.length() > 0 && data.getBoolean(0)){
-                            daySteps += dayData.getInt("offset");
-                        }
+                        daySteps = dayData.getInt("steps") + dayData.getInt("offset");
                     }catch(JSONException err){
                         Log.e(TAG,"Exception while getting Object from JSON for "+currentDateString);
                     }
