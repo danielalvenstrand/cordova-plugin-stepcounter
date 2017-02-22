@@ -227,7 +227,7 @@ public class CordovaStepCounter extends CordovaPlugin {
                 Log.i(TAG, "No steps history found in stepCounterService !");
                 callbackContext.success("{}");
             }
-        },
+        }
         else {
             Log.e(TAG, "Invalid action called on class " + TAG + ", " + action);
             callbackContext.error("Invalid action called on class " + TAG + ", " + action);
