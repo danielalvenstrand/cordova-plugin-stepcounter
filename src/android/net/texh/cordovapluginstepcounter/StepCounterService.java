@@ -105,9 +105,6 @@ public class StepCounterService extends Service implements SensorEventListener {
         //PendingIntent.GetService (ApplicationContext, 10, intent2, PendingIntentFlags.UpdateCurrent);
         aManager.set(AlarmManager.RTC, java.lang.System.currentTimeMillis() + 1000 * 60 * 60, stepIntent);
 
-        // Set interval to wake app
-        aManager.setInexactRepeating(AlarmManager.RTC, java.lang.System.currentTimeMillis() + AlarmManager.INTERVAL_HALF_HOUR, stepIntent);
-
         if (isRunning /* || has no step sensors */) {
             Log.i(TAG, "Not initialising sensors");
             return Service.START_STICKY;
